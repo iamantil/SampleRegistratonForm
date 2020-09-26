@@ -28,6 +28,6 @@
     
   </dependencies>
   <build>
-    <finalName>AppnForm</finalName>
+    <finalName>AppForm</finalName>
   </build>
 </project>
