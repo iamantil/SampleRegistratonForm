@@ -28,6 +28,6 @@
     
   </dependencies>
   <build>
-    <finalName>MYForm</finalName>
+    <finalName>JobApplicationForm</finalName>
   </build>
 </project>
