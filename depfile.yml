@@ -13,9 +13,9 @@ spec:
     spec:
       containers:
         - name: httpd
-         image: httpd:2
-         ports:
-           - containerPort: 80
+          image: httpd:2i
+          ports:
+            - containerPort: 80
   selector:
-    matchlabels:
+    matchLabels:
       app: httpd
