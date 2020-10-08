@@ -4,5 +4,3 @@ services:
     build:
       context: "/home/ec2-user"
       dockerfile: "Dockerfile.httpd"
-    ports:
-      - "80:80"
