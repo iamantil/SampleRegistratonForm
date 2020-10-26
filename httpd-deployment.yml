@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: httpd
-          image: httpdimg:1.0
+          image: image:1.0
           ports:
             - containerPort: 80
   selector:
