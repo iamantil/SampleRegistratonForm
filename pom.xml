@@ -28,6 +28,6 @@
     
   </dependencies>
   <build>
-    <finalName>CollegeApplicationForm</finalName>
+    <finalName>NewAppForm</finalName>
   </build>
 </project>
