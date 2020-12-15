@@ -1,8 +1,0 @@
-version: '3'
-services:
-  webservice:
-    build:
-      context: "/home/ec2-user"
-      dockerfile: "Dockerfile.httpd"
-    ports:
-      - "100:80"
