@@ -68,7 +68,6 @@ id="personaladdress" size="30"></td>
 <option value="MCA">MCA</option>
 <option value="MBA">MBA</option>
 <option value="BCA">BCA</option>
-<option value="JBT">JBT</option>
 </select></td>
 </tr>
 
