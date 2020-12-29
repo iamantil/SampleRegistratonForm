@@ -79,6 +79,7 @@ id="personaladdress" size="30"></td>
 <option value="UP">UP</option>
 <option value="Goa">GOA</option>
 <option value="Patna">PATNA</option>
+<option value="HR">HR</option>
 </select></td>
 
 </tr>
