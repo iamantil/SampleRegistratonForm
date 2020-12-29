@@ -1,9 +1,5 @@
 version: '3'
 services:
-  be:
-    build:
-      context: "."
-      dockerfile: "Dockerfile.httpd"
   fe:
     build:
       context: "/home/ec2-user"
