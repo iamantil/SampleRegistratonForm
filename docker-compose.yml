@@ -5,4 +5,4 @@ services:
       context: "/home/ec2-user"
       dockerfile: "Dockerfile"
     ports:
-      - "80:80"
+      - "80:8080"
