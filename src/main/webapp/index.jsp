@@ -79,7 +79,6 @@ id="personaladdress" size="30"></td>
 <option value="UP">UP</option>
 <option value="Goa">GOA</option>
 <option value="Patna">PATNA</option>
-<option value="HR">HR</option>
 </select></td>
 
 </tr>
@@ -92,6 +91,7 @@ id="personaladdress" size="30"></td>
 <option value="Mumbai">MUMBAI</option>
 <option value="Goa">GOA</option>
 <option value="Bihar">BIHAR</option>
+<option value="HR">HR</option>
 </select></td>
 </tr>
 <tr>
