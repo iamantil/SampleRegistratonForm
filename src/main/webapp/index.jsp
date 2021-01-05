@@ -1,4 +1,4 @@
-<html>
+i<html>
 <head>
 <script type="text/javascript" src="validate.js"></script>
 <title>Register now!</title>
@@ -17,7 +17,7 @@ cellspacing="2">
 
 <tr>
 <td colspan=2>
-<center><font size=4><b>ElectionReg/font></center>
+<center><font size=4><b>ElectionReg</b>/font></center>
 </td>
 </tr>
 
