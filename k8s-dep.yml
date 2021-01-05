@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    app: website
+spec:
+  replicas: 10
+  selector:
+    matchlabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+        name: custom-website
+        image: ssr123/httpdwebsite:1.0
+        port:
+          - containerPort: 80
