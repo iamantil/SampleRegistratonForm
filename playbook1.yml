@@ -1,0 +1,55 @@
+- name: update
+  hosts: appserver
+  become_user: root
+  become: true
+  tasks:
+    - name: do a yum update
+      command: yum update -y
+- name: website deployment
+  hosts: webserver
+  become_user: root
+  become: true
+  tasks:
+    - name: install httpd server
+      yum:
+        name: httpd
+        state: present
+    - name: copy website from local to remote
+      copy:
+        src: index.html
+        dest: /var/www/html
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+- name: java setup
+  hosts: appserver
+  become_user: root
+  become: true
+  tasks:
+    - name: install java
+      yum: name=java state=latest
+
+- name: app server setup deployment
+  hosts: appserver
+  tasks:
+    - name: download tomcat
+      get_url:
+         url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.61/bin/apache-tomcat-8.5.61.tar.gz
+         dest: /home/ec2-user/
+         force: no
+    - name: untar tomcat
+      unarchive:
+        src: /home/ec2-user/apache-tomcat-8.5.61.tar.gz
+        dest: /home/ec2-user/
+        remote_src: true
+    - name: copy war file to tomcat directory
+      copy:
+        src: /home/ec2-user/Registration.war
+        dest: /home/ec2-user/apache-tomcat-8.5.61/webapps/
+    - name: stating tomcat
+      command: nohup /home/ec2-user/apache-tomcat-8.5.61/bin/startup.sh
+
+      
+
