@@ -6,3 +6,9 @@ services:
       dockerfile: "Dockerfile"
     ports:
       - "80:8080"
+  be:
+    build:
+      context: "/home/ec2-user"
+      dockerfile: "Dockerfile.httpd"
+    ports:
+      - "90:80"
