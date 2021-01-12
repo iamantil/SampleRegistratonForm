@@ -69,6 +69,7 @@ id="personaladdress" size="30"></td>
 <option value="MCA">MCA</option>
 <option value="MBA">MBA</option>
 <option value="BCA">BCA</option>
+<option value="ITI">ITI</option>
 </select></td>
 </tr>
 
@@ -80,6 +81,7 @@ id="personaladdress" size="30"></td>
 <option value="UP">UP</option>
 <option value="Goa">GOA</option>
 <option value="Patna">PATNA</option>
+<option value="SNP">SNP</option>
 </select></td>
 
 </tr>
