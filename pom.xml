@@ -28,6 +28,6 @@
     
   </dependencies>
   <build>
-    <finalName>CollegeRegForm</finalName>
+    <finalName>ElectionRegForm</finalName>
   </build>
 </project>
