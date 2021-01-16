@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: custom-website
-          image: myteqhub/test:2.0
+          image: myteqhub/test:3.0
           ports:
             - containerPort: 80
