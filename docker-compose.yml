@@ -1,3 +1,19 @@
+# services:
+#   fe:
+#     build:
+#       context: "."
+#       dockerfile: "Dockerfile"
+#     ports:
+#       - "80:8080"
+#   be:
+#     build:
+#       context: "."
+#       dockerfile: "Dockerfile.httpd"
+#     ports:
+#       - "90:80"
+
+
+version: '3.8'
 services:
   fe:
     build:
@@ -10,4 +26,4 @@ services:
       context: "."
       dockerfile: "Dockerfile.httpd"
     ports:
-      - "90:80"
+      - "90:80"
