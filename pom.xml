@@ -22,12 +22,19 @@
 <dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
-    <version>3.3.1</version>
+    <version>3.1.0</version>
     <scope>provided</scope>
 </dependency>
     
   </dependencies>
   <build>
     <finalName>CollegeForm</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+    </plugins>
   </build>
 </project>
