@@ -4,7 +4,11 @@ services:
       context: "."
       dockerfile: "Dockerfile"
     ports:
+      - "8443:8443"
       - "80:8080"
+    environment:
+      # Pass runtime environment variables
+      - JAVA_OPTS=-Djavax.net.ssl.trustStore=/usr/local/tomcat/ssl/keystore.p12
   be:
     build:
       context: "."
