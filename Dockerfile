@@ -6,6 +6,14 @@ RUN mkdir -p /usr/local/tomcat/ssl
 # Copy the certificate and key into the container
 COPY certificate.pem /usr/local/tomcat/ssl/certificate.pem
 COPY privatekey.pem /usr/local/tomcat/ssl/privatekey.pem
-# Update Tomcat configuration to use the SSL certificate
-RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/certificate.pem" keystorePass="changeit" keyAlias="tomcat" keystoreType="PKCS12" keyPass="changeit" /></Service>|' /usr/local/tomcat/conf/server.xml
+# Combine the certificate and key into a PKCS12 keystore
+RUN apt-get update && apt-get install -y openssl && \
+    openssl pkcs12 -export -in /usr/local/tomcat/ssl/certificate.pem \
+    -inkey /usr/local/tomcat/ssl/privatekey.pem \
+    -out /usr/local/tomcat/ssl/keystore.p12 \
+    -name tomcat \
+    -password pass:changeit && \
+    rm -rf /var/lib/apt/lists/*
+# Update Tomcat configuration to use the keystore
+RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/keystore.p12" keystorePass="changeit" keystoreType="PKCS12" /></Service>|' /usr/local/tomcat/conf/server.xml
 CMD ["catalina.sh", "run"]
