@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install -y openssl && \
     -certfile /usr/local/tomcat/ssl/ca_chain.pem \
     -password pass:changeit && \
     rm -rf /var/lib/apt/lists/*
+# Install JDK for keytool
+RUN apt-get install -y openjdk-8-jdk
+# Create a separate truststore and import the CA certificates
+RUN keytool -import -alias root -keystore /usr/local/tomcat/ssl/truststore.jks -file /usr/local/tomcat/ssl/ca_chain.pem -storepass changeit -noprompt
 # Update Tomcat configuration to use the keystore
 RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/keystore.p12" keystorePass="changeit" keystoreType="PKCS12" truststoreFile="/usr/local/tomcat/ssl/truststore.jks" truststorePass="changeit" truststoreType="JKS" /></Service>|' /usr/local/tomcat/conf/server.xml
 CMD ["catalina.sh", "run"]
