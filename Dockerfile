@@ -6,6 +6,7 @@ RUN mkdir -p /usr/local/tomcat/ssl
 # Copy the certificate and key into the container
 COPY certificate.pem /usr/local/tomcat/ssl/certificate.pem
 COPY privatekey.pem /usr/local/tomcat/ssl/privatekey.pem
+COPY ch_chain.pem /usr/local/tomcat/ssl/ca_chain.pem
 # Combine the certificate and key into a PKCS12 keystore
 RUN apt-get update && apt-get install -y openssl && \
     openssl pkcs12 -export -in /usr/local/tomcat/ssl/certificate.pem \
