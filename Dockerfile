@@ -17,5 +17,5 @@ RUN apt-get update && apt-get install -y openssl && \
     -password pass:changeit && \
     rm -rf /var/lib/apt/lists/*
 # Update Tomcat configuration to use the keystore
-RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/keystore.p12" keystorePass="changeit" keystoreType="PKCS12" truststoreFile="/usr/local/tomcat/ssl/keystore.p12" truststorePass="changeit" truststoreType="PKCS12" /></Service>|' /usr/local/tomcat/conf/server.xml
+RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/keystore.p12" keystorePass="changeit" keystoreType="PKCS12" truststoreFile="/usr/local/tomcat/ssl/truststore.jks" truststorePass="changeit" truststoreType="JKS" /></Service>|' /usr/local/tomcat/conf/server.xml
 CMD ["catalina.sh", "run"]
