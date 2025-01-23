@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install -y openssl && \
     -certfile /usr/local/tomcat/ssl/ca_chain.pem \
     -password pass:changeit && \
     rm -rf /var/lib/apt/lists/*
+# Add the PPA repository for OpenJDK 8
+RUN apt-get update && apt-get install -y software-properties-common && \
+    add-apt-repository ppa:openjdk-r/ppa && \
+    apt-get update
 # Install JDK for keytool
 RUN apt-get install -y openjdk-8-jdk
 # Create a separate truststore and import the CA certificates
