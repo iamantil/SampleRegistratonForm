@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y openssl && \
     -inkey /usr/local/tomcat/ssl/privatekey.pem \
     -out /usr/local/tomcat/ssl/keystore.p12 \
     -name tomcat \
+    -certfile /usr/local/tomcat/ssl/ca_chain.pem \
     -password pass:changeit && \
     rm -rf /var/lib/apt/lists/*
 # Update Tomcat configuration to use the keystore
