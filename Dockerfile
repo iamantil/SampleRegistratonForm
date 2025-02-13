@@ -9,8 +9,9 @@ COPY ROOT.war /usr/local/tomcat/webapps
 # Create a directory for the SSL certificates
 RUN mkdir -p /usr/local/tomcat/ssl
 
-# Copy the certificate into the container
+# Copy the certificate and privatekey into the container
 COPY certificate.pem /usr/local/tomcat/ssl/certificate.pem
+COPY privatekey.pem /usr/local/tomcat/ssl/privatekey.pem
 
 # Install OpenSSL
 RUN apt-get update && apt-get install -y openssl && \
@@ -28,6 +29,6 @@ RUN apt-get install -y openjdk-8-jdk
 RUN keytool -import -alias root -keystore /usr/local/tomcat/ssl/truststore.jks -file /usr/local/tomcat/ssl/certificate.pem -storepass changeit -noprompt
 
 # Update Tomcat configuration to use the truststore
-RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" truststoreFile="/usr/local/tomcat/ssl/truststore.jks" truststorePass="changeit" truststoreType="JKS" /></Service>|' /usr/local/tomcat/conf/server.xml
+RUN sed -i 's|</Service>|<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" keystoreFile="/usr/local/tomcat/ssl/privatekey.pem" keystorePass="changeit" truststoreFile="/usr/local/tomcat/ssl/truststore.jks" truststorePass="changeit" truststoreType="JKS" /></Service>|' /usr/local/tomcat/conf/server.xml
 
 CMD ["catalina.sh", "run"]
